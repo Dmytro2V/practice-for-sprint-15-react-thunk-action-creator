@@ -36,6 +36,17 @@ export const fetchArticles = () => async dispatch =>{
   dispatch(loadArticles(articles))
 }
 
+export const writeArticle = (payload) => async dispatch =>{
+  const response = await fetch('api/articles', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+  const article = await response.json();
+  dispatch(addArticle(article))
+}
 
 
 
